@@ -1,0 +1,3 @@
+* feature_extractor
+** 使い方
+   第一引数にicsファイルを指定してrubyで実行してください．
