@@ -1,6 +1,6 @@
 * Feature_Extractor
   Feature_Extractor extracts features of your calendar.
-** Hot to use
+** How to use
    #+BEGIN_SRC shell-script
      $ bundle install --path vendor/bundle
      $ bundle exec ruby feature_extractor.rb hogehoge.ics
