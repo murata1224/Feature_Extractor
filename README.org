@@ -1,3 +1,8 @@
-* feature_extractor
-** 使い方
-   第一引数にicsファイルを指定してrubyで実行してください．
+* Feature_Extractor
+  Feature_Extractor extracts features of your calendar.
+** Hot to use
+   #+BEGIN_SRC shell-script
+     $ bundle install --path vendor/bundle
+     $ bundle exec ruby feature_extractor.rb hogehoge.ics
+   #+END_SRC
+   
