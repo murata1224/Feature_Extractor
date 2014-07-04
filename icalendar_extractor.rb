@@ -1,7 +1,11 @@
-class IcalendarExtractor
+# -*- coding: utf-8 -*-
 
-  def initialize(cal)
-    @calendar = cal
+require 'icalendar'
+
+class IcsExtractor
+
+  def initialize(ics_string)
+    @calendar = Icalendar.parse(ics_string).first
   end
 
   def event_count
