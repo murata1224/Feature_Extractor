@@ -36,4 +36,31 @@ class IcsExtractor
     return (summary_sum.to_f / self.event_count)
   end
 
+
+  def average_days_to_dtstart
+    distances = distances_from_created_to_dtstart
+    return distances.average
+  end
+
+  # 予定作成からdays以内に実施される予定の数
+  def num_of_events_held_within(days)
+    distances = distances_from_created_to_dtstart
+    return (distances.select {|d| d <= days }).count
+  end
+
+  private
+  def distances_from_created_to_dtstart
+    distances = Array.new
+    @calendar.events.each do |e|
+      # iCalendar::Values::DateTime　クラスは，
+      # なぜかオブジェクト同士の加減算ができない
+      dtstart =
+        Date.new(e.dtstart.year, e.dtstart.month, e.dtstart.day)
+      created =
+        Date.new(e.created.year, e.created.month, e.created.day)
+      distances << (dtstart - created).to_i
+    end
+    return distances
+  end
+
 end
