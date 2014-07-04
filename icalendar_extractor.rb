@@ -2,6 +2,22 @@
 
 require 'icalendar'
 
+class Array
+  def average
+    inject(0.0) { |sum, i| sum += i } / size
+  end
+
+  def variance
+    ave = average
+    inject(0.0) { |sum, i| sum += (i - ave)**2 } / size
+  end
+
+  def standard_devitation
+    Math::sqrt(variance)
+  end
+end
+
+
 class IcsExtractor
 
   def initialize(ics_string)
