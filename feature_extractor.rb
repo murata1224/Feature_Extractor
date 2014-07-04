@@ -13,9 +13,9 @@ ical_extractor = IcsExtractor.new(ics_string)
 
 puts "### calendar ###"
 
-puts "summary_average\t: " +
+puts "summary_average:\t " +
   ical_extractor.summary_average.round(1).to_s
-puts "event_count\t: " +
+puts "event_count:\t\t " +
   ical_extractor.event_count.to_s
 
 puts "### event ###"
