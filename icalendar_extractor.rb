@@ -17,6 +17,15 @@ class Array
   end
 end
 
+module Icalendar
+  class Event
+    # iCalendar::Values::DateTime　クラスは，
+    # なぜかオブジェクト同士の加減算ができない
+    # このため，Ruby組み込みのDate型を使う
+    attr_accessor :my_created, :my_dtstart
+  end
+end
+
 
 class IcsExtractor
 
