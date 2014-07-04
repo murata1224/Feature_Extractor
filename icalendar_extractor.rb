@@ -46,6 +46,14 @@ class IcsExtractor
     return (summary_sum.to_f / self.event_count)
   end
 
+  # 全てのeventのCREATEDからDTSTARTまでの平均日数
+  def average_all_events_to_dtstart
+    distances = Array.new
+    @calendar.events.each do |e|
+      distances << (e.my_dtstart - e.my_created).to_i
+    end
+    return distances.average
+  end
 
   # 事前に登録された(dtstart - created がプラス)eventの
   # CREATEDからDTSTARTまでの平均日数
@@ -73,6 +81,15 @@ class IcsExtractor
          (e.my_dtstart - e.my_created) <= to_day )
     end
   end
+
+  def duration_of_using_calendar
+    min_created = @calendar.events.first.my_created
+    max_created = @calendar.events.first.my_created
+    @calendar.events.each do |e|
+      min_created = e.my_created if e.my_created < min_created
+      max_created = e.my_created if e.my_created > max_created
+    end
+    return min_created, max_created
   end
 
   private
